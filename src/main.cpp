@@ -17,7 +17,7 @@ std::cout << "Debug mode is enabled." << std::endl;
 #endif
 
 #ifdef _DEBUG
-std::cout << "Not debug" << std::endl;
+std::cout << "Release" << std::endl;
 #endif
 
 	file.close();
