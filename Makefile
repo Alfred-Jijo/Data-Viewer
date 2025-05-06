@@ -5,11 +5,25 @@ NAME = data-viewer
 VERSION = 0.0.1
 PREFIX ?= $(HOME)/.local
 
-CXX ?= g++
-CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++20
+BUILD ?= debug
+OUTDIR = out/$(BUILD)
+OUTNAME = $(OUTDIR)/$(NAME)
 
+CXX ?= g++
 CC ?= gcc
-CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
+
+# Base flags
+BASE_CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++20
+BASE_CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
+
+# Build-specific flags
+ifeq ($(BUILD),release)
+	CXXFLAGS = $(BASE_CXXFLAGS) -O2
+	CFLAGS = $(BASE_CFLAGS) -O2
+else
+	CXXFLAGS = $(BASE_CXXFLAGS) -g
+	CFLAGS = $(BASE_CFLAGS) -g
+endif
 
 CXXSRC = src/main.cpp lib/file_operations.cpp
 CSRC = lib/ds.c
@@ -17,27 +31,29 @@ OBJ = $(CXXSRC:%.cpp=%.o) $(CSRC:%.c=%.o)
 INCLUDE = -Iinclude
 
 # Default target
-all: $(NAME)
+all: $(OUTNAME)
 
-# Compile target
-$(NAME): $(OBJ)
-	$(CXX) $(OBJ) -o $(NAME)
+# Link target
+$(OUTNAME): $(OBJ)
+	mkdir -p $(OUTDIR)
+	$(CXX) $(OBJ) -o $(OUTNAME)
 
-# Rule to compile source files
-.cpp.o:
+# Pattern rule for C++ files
+%.o: %.cpp
 	$(CXX) -c $< -o $@ $(CXXFLAGS) $(INCLUDE)
 
-.c.o:
+# Pattern rule for C files
+%.o: %.c
 	$(CC) -c $< -o $@ $(CFLAGS) $(INCLUDE)
 
 # Run target
-run: $(NAME)
-	./$(NAME)
+run: $(OUTNAME)
+	./$(OUTNAME)
 
 # Clean target
 clean:
+	$(RM) -r $(OUTDIR)
 	$(RM) $(OBJ)
-	$(RM) $(NAME)
 
 # Phony targets
 .PHONY: all run clean

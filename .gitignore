@@ -34,3 +34,6 @@ compile_commands.json
 .cache
 zig-*
 template
+.vscode/
+data-viewer
+out/*
