@@ -11,6 +11,14 @@ int main(void) {
 	std::string line, value;
 	std::vector<std::vector<std::string>> table;
 	std::ifstream file = openFile("hi.csv");
+	
+	#ifdef DEBUG
+	std::cout << "Debug mode is enabled." << std::endl;
+	#endif
+
+	#ifdef _DEBUG
+	std::cout << "Not debug" << std::endl;
+	#endif
 
 	file.close();
 	return 0;
