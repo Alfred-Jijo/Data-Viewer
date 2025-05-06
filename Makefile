@@ -11,7 +11,7 @@ CXXFLAGS = -Wall -Wextra -Werror -pedantic -std=c++20
 CC ?= gcc
 CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
 
-CXXSRC = src/main.cpp
+CXXSRC = src/main.cpp lib/file_operations.cpp
 CSRC = lib/ds.c
 OBJ = $(CXXSRC:%.cpp=%.o) $(CSRC:%.c=%.o)
 INCLUDE = -Iinclude
