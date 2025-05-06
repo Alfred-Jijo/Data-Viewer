@@ -13,11 +13,11 @@ int main(void) {
 	std::ifstream file = openFile("hi.csv");
 	
 #ifdef DEBUG
-std::cout << "Debug mode is enabled." << std::endl;
+	std::cout << "Debug mode is enabled." << std::endl;
 #endif
 
 #ifdef _DEBUG
-std::cout << "Release" << std::endl;
+	std::cout << "Release" << std::endl;
 #endif
 
 	file.close();
