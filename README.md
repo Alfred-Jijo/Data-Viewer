@@ -1,7 +1,5 @@
 # Data-Viewer
 
----
-
 ## Building and Running the Project
 
 This project uses a `Makefile` to build and run a mixed C++ and C codebase.
