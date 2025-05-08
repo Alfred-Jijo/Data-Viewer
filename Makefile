@@ -18,11 +18,11 @@ BASE_CFLAGS = -Wall -Wextra -Werror -pedantic -std=c99
 
 # Build-specific flags
 ifeq ($(BUILD),release)
-	CXXFLAGS = $(BASE_CXXFLAGS) -O2
-	CFLAGS = $(BASE_CFLAGS) -O2
+	CXXFLAGS = $(BASE_CXXFLAGS) -O2 -D_DEBUG
+	CFLAGS = $(BASE_CFLAGS) -O2 -D_DEBUG
 else
-	CXXFLAGS = $(BASE_CXXFLAGS) -g
-	CFLAGS = $(BASE_CFLAGS) -g
+	CXXFLAGS = $(BASE_CXXFLAGS) -g -DDEBUG
+	CFLAGS = $(BASE_CFLAGS) -g -DDEBUG
 endif
 
 CXXSRC = src/main.cpp lib/viewer.cpp
