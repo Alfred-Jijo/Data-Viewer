@@ -2,7 +2,7 @@
 
 # Variables
 NAME = data-viewer
-VERSION = 0.0.1
+VERSION = 0.2.5
 PREFIX ?= $(HOME)/.local
 
 BUILD ?= debug
@@ -25,8 +25,8 @@ else
 	CFLAGS = $(BASE_CFLAGS) -g
 endif
 
-CXXSRC = src/main.cpp lib/file_operations.cpp
-CSRC = lib/ds.c
+CXXSRC = src/main.cpp lib/viewer.cpp
+CSRC =  
 OBJ = $(CXXSRC:%.cpp=%.o) $(CSRC:%.c=%.o)
 INCLUDE = -Iinclude
 
