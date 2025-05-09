@@ -10,9 +10,17 @@
 #include <algorithm>
 #include <cctype>
 
+/**
+ * @author Alfred Jijo
+ * @brief A simple CSV viewer and filter.
+ */
 namespace DataVwr {
 
-    std::vector<std::string> splitCSVLine(const std::string& line);
+    std::string toLower(const std::string& str);
+
+    bool equalsIgnoreCase(const std::string &a, const std::string &b);
+
+    std::vector<std::string> splitCSVLine(const std::string &line);
 
     std::vector<std::vector<std::string>> readCSV(const std::string& filename);
 
